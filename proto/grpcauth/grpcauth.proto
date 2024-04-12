@@ -2,12 +2,11 @@ syntax = "proto3";
 
 package auth;
 
-option go_package = "karmaplush.grpc_auth.v1;grpc_authv1";
+option go_package = "github.com/karmaplush/proto-contract.v1;grpcauthv1";
 
 service Auth {
     rpc Register (RegisterRequest) returns (RegisterResponse);
     rpc Login (LoginRequest) returns (LoginResponse);
-    rpc IsAdmin (IsAdminRequest) returns (IsAdminResponse);
 }
 
 message RegisterRequest {
@@ -26,13 +25,6 @@ message LoginRequest {
 }
 
 message LoginResponse {
-    string token = 1;
-}
-
-message IsAdminRequest {
     int64 user_id = 1;
-}
-
-message IsAdminResponse {
-    bool is_admin = 1;
+    string token = 2;
 }
